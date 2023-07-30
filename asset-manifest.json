@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sudoku-solver/static/css/main.3e3df7f0.css",
+    "main.js": "/sudoku-solver/static/js/main.a58da00e.js",
+    "index.html": "/sudoku-solver/index.html",
+    "main.3e3df7f0.css.map": "/sudoku-solver/static/css/main.3e3df7f0.css.map",
+    "main.a58da00e.js.map": "/sudoku-solver/static/js/main.a58da00e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3e3df7f0.css",
+    "static/js/main.a58da00e.js"
+  ]
+}
