@@ -1,3 +1,6 @@
+const START = "Enter the known numbers";
+const SOLVED = "Solved!"
+
 const defaultArray = [
   ["", "", "", "", "", "", "", "", ""],
   ["", "", "", "", "", "", "", "", ""],
@@ -78,16 +81,34 @@ const solve = () => {
 
 const solvePuzzle = () => {
   const hasSolution = solve();
-  if (!hasSolution) console.log("no");
+  if (!hasSolution) console.log("no solution");
 
-  
-  console.log(sudokuArray);
+  // fill in the board display with the solution
+  for (let row = 0; row < 9; row++) {
+    for (let col = 0; col < 9; col++) {
+      const id = row + "-" + col;
+      const cell = document.getElementById(id) as HTMLInputElement;
+      cell.value = sudokuArray[row][col];
+    }
+  }
+
+  const status = document.getElementById("status") as HTMLDivElement;
+  status.textContent = SOLVED;
 };
 
 const solveCell = () => {
   const hasSolution = solve();
-  if (!hasSolution) console.log("no");
-  console.log("cell");
+  if (!hasSolution) console.log("no solution");
+
+  const activeElement = document.activeElement;
+
+  if (!activeElement || activeElement.tagName !== "INPUT") return;
+
+  const cell = activeElement as HTMLInputElement;
+  const index = activeElement.id.split("-");
+  const row: number = parseInt(index[0]);
+  const col: number = parseInt(index[1]);
+  cell.value = sudokuArray[row][col];
 };
 
 const clear = () => {
@@ -98,6 +119,9 @@ const clear = () => {
     }
   }
   sudokuArray = defaultArray;
+
+  const status = document.getElementById("status") as HTMLDivElement;
+  status.textContent = START;
 };
 
 export { handleChange, solvePuzzle, solveCell, clear };
